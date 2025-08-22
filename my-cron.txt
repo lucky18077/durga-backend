@@ -1,0 +1,1 @@
+* * * * * cd /home/u261892001/domains/bulk-basket.com/public_html && /opt/alt/php82/usr/bin/php artisan schedule:run >> /home/u261892001/cron.log 2>&1
