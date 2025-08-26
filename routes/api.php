@@ -12,7 +12,8 @@ Route::get('/test', function () {
     return response()->json(['message' => 'API is working']);
 });
 
-// Route::post('/customer-login', [LoginController::class, 'customerLoginApi']);
+Route::post('/customer-login', [LoginController::class, 'customerLoginApi']);
+Route::post('/send-otp', [LoginController::class, 'sendOtp']);
 Route::post('/verify-otp', [LoginController::class, 'verifyOtp']);
 Route::post('/customer-signup', [LoginController::class, 'saveCustomerApi']);
 Route::get('/get-category', [ApiController::class, 'getCategory'])->name('get-category');
