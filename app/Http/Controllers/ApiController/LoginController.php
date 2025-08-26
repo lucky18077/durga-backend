@@ -160,6 +160,7 @@ class LoginController extends Controller
                     "name" => $request->name,
                     "number" => $request->number,
                     "email" => $request->email,
+                    "password" => $request->password,
                     "address" => $request->address,
                     "state" => $request->state,
                     "city" => $request->city,
