@@ -145,7 +145,7 @@ class ApiController extends Controller
         $products = $prod->paginate(50);
 
         foreach ($products as $key => $value) {
-            $products[$key]->details = DB::table("product_price")->where("product_id", $value->id)->get(); 
+            $products[$key]->details = DB::table("product_price")->where("product_id", $value->id)->get();
             if ($customer_id) {
                 $cartItem = DB::table("cart")
                     ->where("product_id", $value->id)
@@ -889,7 +889,6 @@ class ApiController extends Controller
         try {
             $customer_id = $request->user['id'];
             $productId = $request->input('product_id');
-
             if (!$productId) {
                 return response()->json([
                     'success' => false,
@@ -904,6 +903,7 @@ class ApiController extends Controller
 
             return response()->json([
                 'success' => true,
+                "customer"=>$request->user['id'],
                 'message' => 'Item removed successfully'
             ]);
         } catch (\Exception $e) {
