@@ -79,7 +79,7 @@
 </style>
 <!-- /Main Wrapper -->
 <div id="loader" style="display:none;">
-    <img src="/logo/">
+    <img src="/logo/loader.webp">
 </div>
 
 
@@ -249,7 +249,7 @@
     }
 
     body {
-        margin-top: 10px;
+        /* margin-top: 10px; */
         color: #484b51;
     }
 

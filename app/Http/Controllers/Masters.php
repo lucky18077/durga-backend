@@ -460,6 +460,7 @@ class Masters extends Controller
                     "mrp" => $request->mrp,
                     "gst" => $request->gst,
                     "cess_tax" => $request->cess_tax,
+                    "discount" => $request->discount,
                     "article_no" => $request->article_no,
                     "hsn_code" => $request->hsn_code,
                     "uom_id" => $request->uom_id,
@@ -469,7 +470,7 @@ class Masters extends Controller
                     "supplier_id" => $request->user['supplier_id'],
                     "video_link" => $request->video_link,
                     "active" => $request->active,
-                    "is_deal" => $request->is_deal,
+                    // "is_deal" => $request->is_deal,
                     "qty" => $request->qty,
 
 
@@ -495,7 +496,8 @@ class Masters extends Controller
                     "supplier_id" => $request->user['supplier_id'],
                     "video_link" => $request->video_link,
                     "active" => $request->active,
-                    "is_deal" => $request->is_deal,
+                     "discount" => $request->discount,
+                    // "is_deal" => $request->is_deal,
                     "qty" => $request->qty,
                 ));
             }
@@ -611,5 +613,9 @@ class Masters extends Controller
     public function UpdateProductIsdeal(Request $request)
     {
         DB::table("products")->where("id", $request->id)->update(array("is_deal" => $request->is_deal));
+    }
+    public function UpdateProductDiscount(Request $request)
+    {
+        DB::table("products")->where("id", $request->id)->update(array("is_discount" => $request->is_discount));
     }
 }

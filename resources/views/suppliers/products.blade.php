@@ -50,6 +50,7 @@
                         <th>S.No</th>
                         <th>Active</th>
                         <th>Deal Of Day</th>
+                        <th>Discount</th>
                         <th>Image</th>
                         <th>Brand</th>
                         <th>Category</th>
@@ -194,6 +195,11 @@
                             <div class="col-md-4 mt-3">
                                 <label for="">Cess Tax</label>
                                 <input type="number" step="0.01" name="cess_tax" id="cess_tax" value="0"
+                                    class="form-control">
+                            </div>
+                              <div class="col-md-4 mt-3">
+                                <label for="">Discount</label>
+                                <input type="number" step="0.01" name="discount" id="discount"
                                     class="form-control">
                             </div>
                             <div class="col-md-4 mt-3">
@@ -759,8 +765,12 @@
                         data:"is_deal"
                     },
                     {
+                        data:'is_discount'
+                    },
+                    {
                         data: 'image'
-                    }, {
+                    }, 
+                    {
                         data: "name"
                     },
                     {
@@ -878,6 +888,37 @@
                     type: "POST",
                     data: {
                         is_deal: is_deal,
+                        id: id,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    beforeSend: function() {
+                        $("#loader").show();
+                    },
+                    success: function(result) {
+
+                    },
+                    complete: function() {
+                        $("#loader").hide();
+                    },
+                    error: function(result) {
+                        toastr.error(result.responseJSON.message);
+                    }
+                });
+            })
+
+             $(document).on("click", ".is_discount", function() {
+                var is_discount = 0;
+                var id = $(this).val()
+                if ($(this).prop("checked")) {
+                    is_discount = 1;
+                }
+                $.ajax({
+                    url: "/supplier/UpdateProductDiscount",
+                    type: "POST",
+                    data: {
+                        is_discount: is_discount,
                         id: id,
                     },
                     headers: {

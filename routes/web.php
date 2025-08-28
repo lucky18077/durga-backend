@@ -153,6 +153,7 @@ Route::middleware([Suppliers::class])->group(function () {
 
     Route::post('supplier/UpdateProductStatus', [Masters::class, 'UpdateProductStatus'])->name('supplier/UpdateProductStatus');
     Route::post('supplier/UpdateProductIsdeal', [Masters::class, 'UpdateProductIsdeal'])->name('supplier/UpdateProductIsdeal');
+    Route::post('supplier/UpdateProductDiscount', [Masters::class, 'UpdateProductDiscount'])->name('supplier/UpdateProductDiscount');
 });
 
 Route::middleware([Customers::class])->group(function () {

@@ -713,6 +713,15 @@ class Supplier extends Controller
                         
                             </div>';
                 })
+                 ->editColumn('is_discount', function ($row) {
+                    return $row->is_discount == 1
+                        ? '<div class="form-check  form-switch">
+                            <input class="form-check-input is_discount" type="checkbox" value="' . $row->id . '"  role="switch"" checked>
+                            </div>'
+                        : '<div class="form-check  form-switch">
+                            <input class="form-check-input is_discount" type="checkbox" role="switch"  value="' . $row->id . '" >                        
+                            </div>';
+                })
 
                 ->addColumn('action', function ($row) {
                     $jsonData = htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8');
@@ -729,7 +738,7 @@ class Supplier extends Controller
                 </button>
             ';
                 })
-                ->rawColumns(['image', 'active', "is_deal", 'action'])
+                ->rawColumns(['image', 'active', "is_deal", "is_discount",'action'])
                 ->make(true);
         }
     }
